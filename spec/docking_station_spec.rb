@@ -12,15 +12,16 @@ describe DockingStation do
  it "docks a bike" do
    bike = Bike.new
    expect(subject.dock(bike)).to eq bike
+   expect{subject.dock(bike)}.to raise_error "Dock full"
+
   end
  
   describe '#release_bike' do
     it "raises an error if no bikes in dock" do
   	expect {subject.release_bike}.to raise_error 'No bikes available'
   end
-
   end
-  
+ 
 end
 
 
