@@ -2,10 +2,19 @@ class Bike
   def working?
   	return true 
   end
+
 end
 
 class DockingStation
+  attr_reader :bike
+
   def release_bike
-    return Bike.new
-    end
+    Bike.new
+  end
+
+  def dock(bike)
+    @bike = bike
+  end
+
 end
+
