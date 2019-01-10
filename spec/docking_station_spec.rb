@@ -3,8 +3,6 @@ require "docking_station"
 # check methods to release bike
 describe DockingStation do
   it {is_expected.to respond_to(:release_bike)}
-  	it {subject.release_bike == Bike.new}
-  	it { expect(subject.release_bike).to be_working }
 end
 
 # check docking methods
@@ -14,6 +12,15 @@ describe DockingStation do
  it "docks a bike" do
    bike = Bike.new
    expect(subject.dock(bike)).to eq bike
-   expect(subject.bike).to eq bike
+  end
+ 
+  describe '#release_bike' do
+    it "raises an error if no bikes in dock" do
+  	expect {subject.release_bike}.to raise_error 'No bikes available'
+  end
+
+  end
+  
 end
-end
+
+
